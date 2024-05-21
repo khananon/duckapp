@@ -9,6 +9,7 @@ import android.view.ViewGroup
 import com.example.instagram.Models.User
 import com.example.instagram.R
 import com.example.instagram.SignUpActivity
+import com.example.instagram.adapters.ViewpagersAdapter
 import com.example.instagram.databinding.FragmentProfileBinding
 import com.example.instagram.utils.USER_NODE
 import com.google.firebase.auth.ktx.auth
@@ -20,7 +21,7 @@ import com.squareup.picasso.Picasso
 
 class profileFragment : Fragment() {
     private lateinit var binding: FragmentProfileBinding
-
+    private lateinit var viewpagersAdapter: ViewpagersAdapter
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
@@ -40,6 +41,11 @@ class profileFragment : Fragment() {
             activity?.startActivity(intent)
 
         }
+        viewpagersAdapter = ViewpagersAdapter(requireActivity().supportFragmentManager)
+        viewpagersAdapter.addFragments(MypostFragment(),"My Post")
+        viewpagersAdapter.addFragments(MyreelFragment(),"My Reel")
+        binding.viewPager.adapter=viewpagersAdapter
+        binding.tableLayout.setupWithViewPager(binding.viewPager)
         return binding.root
     }
 

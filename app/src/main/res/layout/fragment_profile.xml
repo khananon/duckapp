@@ -11,32 +11,38 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="180dp"
+        android:background="@drawable/profile_back">
 
         <de.hdodenhof.circleimageview.CircleImageView
             android:id="@+id/dp"
-            android:layout_width="125dp"
-            android:layout_height="122dp"
+            android:layout_width="84dp"
+            android:layout_height="86dp"
             android:layout_marginStart="16dp"
             android:layout_marginTop="16dp"
             android:layout_marginBottom="16dp"
             android:src="@drawable/user"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.161" />
 
         <TextView
             android:id="@+id/name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="5dp"
-            android:layout_marginStart="4dp"
+            android:layout_marginStart="16dp"
             android:text="Name"
+            android:textColor="@color/black"
+            android:textSize="24dp"
             android:textStyle="bold"
             app:layout_constraintBottom_toTopOf="@+id/bio"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.103"
             app:layout_constraintStart_toEndOf="@+id/dp"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.281"
+            app:layout_constraintVertical_bias="0.51"
             app:layout_constraintVertical_chainStyle="packed" />
 
         <TextView
@@ -44,11 +50,15 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="5dp"
-            android:layout_marginStart="16dp"
             android:text="bio"
+            android:textColor="@color/black"
+            android:textSize="20dp"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toStartOf="@+id/name"
-            app:layout_constraintTop_toBottomOf="@+id/name" />
+            app:layout_constraintEnd_toStartOf="@+id/edit_profile"
+            app:layout_constraintHorizontal_bias="0.177"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/dp"
+            app:layout_constraintVertical_bias="0.317" />
 
         <Button
             android:id="@+id/edit_profile"
@@ -60,20 +70,26 @@
             android:textColor="@color/white"
             android:textSize="16dp"
             android:textStyle="bold"
-            app:layout_constraintBottom_toBottomOf="@+id/dp"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.877"
-            app:layout_constraintStart_toStartOf="@+id/bio"
-            app:layout_constraintTop_toTopOf="@+id/dp"
-            app:layout_constraintVertical_bias="1.0" />
+            app:layout_constraintHorizontal_bias="0.97"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.878" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <com.google.android.material.tabs.TabLayout
+        android:id="@+id/tableLayout"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
+        android:layout_height="wrap_content"
+        android:background="@drawable/profile_back"
+        android:backgroundTint="#FAF8EB"
+        android:layout_marginTop="6dp"
+        />
 
     <androidx.viewpager.widget.ViewPager
+        android:id="@+id/viewPager"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
 </LinearLayout>

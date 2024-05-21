@@ -1,8 +1,21 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
     <!-- Base application theme. -->
     <style name="Base.Theme.Instagram" parent="Theme.Material3.DayNight.NoActionBar">
-        <!-- Customize your light theme here. -->
-        <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
+        Customize your light theme here. -->
+        <item name="colorPrimary">#FFEB3B</item>
+        <item name="bottomNavigationStyle">@style/Widget.App.BottomNavigationView</item>
+    </style>
+
+    <style name="Widget.App.BottomNavigationView" parent="Widget.Material3.BottomNavigationView">
+        <item name="materialThemeOverlay">@style/ThemeOverlay.App.BottomNavigationView</item>
+    </style>
+
+    <style name="ThemeOverlay.App.BottomNavigationView" parent="">
+    <item name="colorSurface">#FFEB3B</item>
+    <item name="colorOnSurfaceVariant">@color/black</item>
+        <item name="colorOnSecondaryContainer">#FD0056</item>
+
+
     </style>
 
     <style name="Theme.Instagram" parent="Base.Theme.Instagram" />

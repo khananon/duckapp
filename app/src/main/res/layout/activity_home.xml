@@ -8,10 +8,13 @@
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/nav_view"
-        android:layout_width="0dp"
-        android:layout_height="56dp"
-app:labelVisibilityMode="unlabeled"
-        android:background="?android:attr/windowBackground"
+        android:layout_width="360dp"
+        android:layout_height="66dp"
+        android:layout_marginBottom="16dp"
+        android:background="@drawable/nav_bar_back"
+        app:itemActiveIndicatorStyle="@android:id/primary"
+        app:itemRippleColor="#FA0257"
+        app:labelVisibilityMode="unlabeled"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"

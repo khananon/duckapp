@@ -8,7 +8,7 @@ import com.example.instagram.Models.Post
 import com.example.instagram.databinding.MyPostRvDesignBinding
 import com.squareup.picasso.Picasso
 
-class my_post_rv_adapter(var context: Context, var postList: ArrayList<Post>): RecyclerView.Adapter<my_post_rv_adapter.ViewHolder>(){
+class my_post_rv_adapter(var context: Context, var postList: ArrayList<Post> ,): RecyclerView.Adapter<my_post_rv_adapter.ViewHolder>(){
     inner class ViewHolder (var binding: MyPostRvDesignBinding) :
             RecyclerView.ViewHolder(binding.root)
 

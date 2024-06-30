@@ -2,7 +2,6 @@ package com.example.instagram.post
 
 import android.content.Intent
 import android.os.Bundle
-import android.view.View
 import androidx.activity.enableEdgeToEdge
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
@@ -13,7 +12,6 @@ import com.example.instagram.R
 import com.example.instagram.databinding.ActivityPostBinding
 import com.example.instagram.utils.POST
 import com.example.instagram.utils.POST_FOLDER
-import com.example.instagram.utils.REEL
 import com.example.instagram.utils.uploadImage
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.firestore.ktx.firestore
@@ -67,8 +65,8 @@ class PostActivity : AppCompatActivity() {
             finish()
         }
         binding.buttonPost.setOnClickListener {
-            val post = Post(imageUrl!!, binding.Caption.editableText.toString())
-            Firebase.firestore.collection(POST).document().set(post).addOnSuccessListener {
+            val post = Post(imageUrl!!, binding.Caption.editableText.toString()) // constructor post
+            Firebase.firestore.collection(POST).document().set(post).addOnSuccessListener { //constant post (name under collection where  it store)
                 Firebase.firestore.collection(Firebase.auth.currentUser!!.uid).document().set(post)
                     .addOnSuccessListener {
                         startActivity(Intent(this@PostActivity, HomeActivity::class.java))

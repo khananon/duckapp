@@ -1,15 +1,13 @@
 package com.example.instagram.fragments
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.StaggeredGridLayoutManager
 import com.example.instagram.Models.Post
-import com.example.instagram.R
 import com.example.instagram.adapters.my_post_rv_adapter
-import com.example.instagram.databinding.FragmentAddBinding
 import com.example.instagram.databinding.FragmentMypostBinding
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.firestore.ktx.firestore
@@ -30,8 +28,8 @@ class MypostFragment : Fragment() {
     ): View? {
         // Inflate the layout for this fragment
         binding=FragmentMypostBinding.inflate(inflater, container, false)
-        var postList=ArrayList<Post>()
-        var adapter=my_post_rv_adapter(requireContext(),postList)
+        var postList=ArrayList<Post>() //hold the object of type post(type means constructor type)
+        var adapter=my_post_rv_adapter(requireContext(),postList) //set the post list
         binding.RV.layoutManager=StaggeredGridLayoutManager(3,StaggeredGridLayoutManager.VERTICAL)
         binding.RV.adapter=adapter
         Firebase.firestore.collection(Firebase.auth.currentUser!!.uid).get().addOnSuccessListener {
@@ -40,8 +38,8 @@ class MypostFragment : Fragment() {
                 var post:Post=i.toObject<Post>()!!
                 tempList.add(post)
             }
-            postList.addAll(tempList)
-            adapter.notifyDataSetChanged()
+            postList.addAll(tempList) //change the postlist with templist
+            adapter.notifyDataSetChanged()// notify Adpapter to reflect change
         }
         return  binding.root
     }

@@ -4,13 +4,14 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:layout_marginTop="30dp"
+    android:layout_marginTop="10dp"
     android:orientation="vertical"
     tools:context=".fragments.profileFragment">
 
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
+android:layout_margin="10dp"
         android:layout_height="180dp"
         android:background="@drawable/profile_back">
 
@@ -83,10 +84,10 @@
         android:id="@+id/tableLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@drawable/profile_back"
-        android:backgroundTint="#FAF8EB"
         android:layout_marginTop="6dp"
-        />
+        android:layout_margin="10dp"
+        android:background="@drawable/profile_back"
+        android:backgroundTint="#F8EDA7" />
 
     <androidx.viewpager.widget.ViewPager
         android:id="@+id/viewPager"

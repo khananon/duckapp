@@ -5,13 +5,16 @@ import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
 import android.text.Html
+import android.view.View
 import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.ContentProviderCompat.requireContext
 import com.example.instagram.Models.User
 import com.example.instagram.databinding.ActivitySignupBinding
+import com.example.instagram.post.PostActivity
 import com.example.instagram.utils.USER_NODE
 import com.example.instagram.utils.USER_PROFILE_FOLDER
 import com.example.instagram.utils.uploadImage
@@ -53,7 +56,16 @@ class SignUpActivity : AppCompatActivity() {
         if(intent.hasExtra("MODE")){
             if(intent.getIntExtra("MODE",-1)==1){
                 binding.main.background = ColorDrawable(Color.WHITE)
-                binding.signupBtn.text="Update Profile"
+                binding.signUpBtn.text="Update Profile"
+                binding.Logout.visibility=View.VISIBLE
+                binding.login.visibility=View.GONE
+                binding.Logout.setOnClickListener {
+                    FirebaseAuth.getInstance().signOut()
+                    startActivity(Intent(this, loginActivity::class.java))
+                    finish()
+
+                }
+
 
                 Firebase.firestore.collection(USER_NODE).document(Firebase.auth.currentUser!!.uid).get()
                     .addOnSuccessListener {
@@ -72,7 +84,7 @@ class SignUpActivity : AppCompatActivity() {
             }
         }
 
-        binding.signupBtn.setOnClickListener{
+        binding.signUpBtn.setOnClickListener{
             if(intent.hasExtra("MODE")){
                 if(intent.getIntExtra("MODE",-1)==1) {
                     Firebase.firestore.collection(USER_NODE)
@@ -82,7 +94,7 @@ class SignUpActivity : AppCompatActivity() {
 
                             Toast.makeText(
                                 this@SignUpActivity,
-                                "Signup successful",
+                                "Profile Update successful",
                                 Toast.LENGTH_SHORT
                             ).show()
                             startActivity(

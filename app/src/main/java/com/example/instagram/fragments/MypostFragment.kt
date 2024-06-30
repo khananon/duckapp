@@ -5,29 +5,23 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.recyclerview.widget.StaggeredGridLayoutManager
+import com.example.instagram.Models.Post
 import com.example.instagram.R
+import com.example.instagram.adapters.my_post_rv_adapter
+import com.example.instagram.databinding.FragmentAddBinding
+import com.example.instagram.databinding.FragmentMypostBinding
+import com.google.firebase.auth.ktx.auth
+import com.google.firebase.firestore.ktx.firestore
+import com.google.firebase.firestore.toObject
+import com.google.firebase.ktx.Firebase
 
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
-
-/**
- * A simple [Fragment] subclass.
- * Use the [MypostFragment.newInstance] factory method to
- * create an instance of this fragment.
- */
 class MypostFragment : Fragment() {
-    // TODO: Rename and change types of parameters
-    private var param1: String? = null
-    private var param2: String? = null
+    private lateinit var  binding: FragmentMypostBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        arguments?.let {
-            param1 = it.getString(ARG_PARAM1)
-            param2 = it.getString(ARG_PARAM2)
-        }
+
     }
 
     override fun onCreateView(
@@ -35,26 +29,24 @@ class MypostFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_mypost, container, false)
+        binding=FragmentMypostBinding.inflate(inflater, container, false)
+        var postList=ArrayList<Post>()
+        var adapter=my_post_rv_adapter(requireContext(),postList)
+        binding.RV.layoutManager=StaggeredGridLayoutManager(3,StaggeredGridLayoutManager.VERTICAL)
+        binding.RV.adapter=adapter
+        Firebase.firestore.collection(Firebase.auth.currentUser!!.uid).get().addOnSuccessListener {
+            var tempList= arrayListOf<Post>()
+            for (i in it.documents){
+                var post:Post=i.toObject<Post>()!!
+                tempList.add(post)
+            }
+            postList.addAll(tempList)
+            adapter.notifyDataSetChanged()
+        }
+        return  binding.root
     }
 
     companion object {
-        /**
-         * Use this factory method to create a new instance of
-         * this fragment using the provided parameters.
-         *
-         * @param param1 Parameter 1.
-         * @param param2 Parameter 2.
-         * @return A new instance of fragment MypostFragment.
-         */
-        // TODO: Rename and change types and number of parameters
-        @JvmStatic
-        fun newInstance(param1: String, param2: String) =
-            MypostFragment().apply {
-                arguments = Bundle().apply {
-                    putString(ARG_PARAM1, param1)
-                    putString(ARG_PARAM2, param2)
+
                 }
             }
-    }
-}

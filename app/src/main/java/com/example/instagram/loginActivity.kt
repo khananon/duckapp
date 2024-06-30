@@ -45,4 +45,8 @@ class loginActivity : AppCompatActivity() {
                         }
                     }
             }
-        }}}
+        }
+        binding.SignupBtnl.setOnClickListener {
+            startActivity(Intent(this,SignUpActivity::class.java))
+        }
+    }}

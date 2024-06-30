@@ -126,7 +126,7 @@ app:passwordToggleEnabled="false"
    </com.google.android.material.textfield.TextInputLayout>
 
    <Button
-       android:id="@+id/signupBtn"
+       android:id="@+id/signUpBtn"
        style="@style/Widget.Material3.Button.ElevatedButton"
        android:layout_width="0dp"
        android:layout_height="55dp"
@@ -142,6 +142,24 @@ app:passwordToggleEnabled="false"
        app:layout_constraintTop_toBottomOf="@+id/textFieldP"
        app:layout_constraintVertical_bias="0.098" />
 
+   <Button
+       android:id="@+id/Logout"
+       style="@style/Widget.Material3.Button.ElevatedButton"
+       android:layout_width="0dp"
+       android:layout_height="55dp"
+       android:backgroundTint="#F42222"
+       android:text="Logout"
+       android:textColor="@color/white"
+       android:textSize="16dp"
+       android:visibility="gone"
+       android:textStyle="bold"
+       app:layout_constraintBottom_toBottomOf="parent"
+       app:layout_constraintEnd_toEndOf="@+id/textFieldP"
+       app:layout_constraintHorizontal_bias="0.0"
+       app:layout_constraintStart_toStartOf="@+id/textFieldP"
+       app:layout_constraintTop_toBottomOf="@+id/textFieldP"
+       app:layout_constraintVertical_bias="0.279" />
+
    <TextView
        android:id="@+id/login"
        android:layout_width="wrap_content"
@@ -150,10 +168,10 @@ app:passwordToggleEnabled="false"
        android:textStyle="bold"
        android:textColor="@color/black"
        app:layout_constraintBottom_toBottomOf="parent"
-       app:layout_constraintEnd_toEndOf="@+id/signupBtn"
+       app:layout_constraintEnd_toEndOf="@+id/signUpBtn"
        app:layout_constraintHorizontal_bias="0.494"
-       app:layout_constraintStart_toStartOf="@+id/signupBtn"
-       app:layout_constraintTop_toBottomOf="@+id/signupBtn"
+       app:layout_constraintStart_toStartOf="@+id/signUpBtn"
+       app:layout_constraintTop_toBottomOf="@+id/signUpBtn"
        app:layout_constraintVertical_bias="0.268" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

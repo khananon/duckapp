@@ -41,7 +41,7 @@ class profileFragment : Fragment() {
             activity?.startActivity(intent)
 
         }
-        viewpagersAdapter = ViewpagersAdapter(requireActivity().supportFragmentManager)
+        viewpagersAdapter = ViewpagersAdapter(childFragmentManager)
         viewpagersAdapter.addFragments(MypostFragment(),"My Post")
         viewpagersAdapter.addFragments(MyreelFragment(),"My Reel")
         binding.viewPager.adapter=viewpagersAdapter

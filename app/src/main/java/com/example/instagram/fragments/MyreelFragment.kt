@@ -7,8 +7,10 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.StaggeredGridLayoutManager
 import com.example.instagram.Models.Reel
+import com.example.instagram.R
 import com.example.instagram.adapters.my_reel_Adapter
 import com.example.instagram.databinding.FragmentMyreelBinding
+import com.example.instagram.post.SpacesItemDecoration
 import com.example.instagram.utils.REEL
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.firestore.ktx.firestore
@@ -33,8 +35,12 @@ class MyreelFragment : Fragment() {
        binding= FragmentMyreelBinding.inflate(inflater, container, false)
         var reelList=ArrayList<Reel>()
         var adapter= my_reel_Adapter(requireContext(), reelList )
+        val spacingInPixels = resources.getDimensionPixelSize(R.dimen.item_spacing)
         binding.RV.layoutManager= StaggeredGridLayoutManager(3, StaggeredGridLayoutManager.VERTICAL)
         binding.RV.adapter=adapter
+        val itemDecoration = SpacesItemDecoration(spacingInPixels)
+        binding.RV.addItemDecoration(itemDecoration)
+
         Firebase.firestore.collection(Firebase.auth.currentUser!!.uid+REEL).get().addOnSuccessListener {
             var tempList= arrayListOf<Reel>()
             for (i in it.documents){

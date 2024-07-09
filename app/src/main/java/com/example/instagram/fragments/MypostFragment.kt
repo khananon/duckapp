@@ -7,8 +7,10 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.StaggeredGridLayoutManager
 import com.example.instagram.Models.Post
+import com.example.instagram.R
 import com.example.instagram.adapters.my_post_rv_adapter
 import com.example.instagram.databinding.FragmentMypostBinding
+import com.example.instagram.post.SpacesItemDecoration
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.firestore.toObject
@@ -30,8 +32,12 @@ class MypostFragment : Fragment() {
         binding=FragmentMypostBinding.inflate(inflater, container, false)
         var postList=ArrayList<Post>() //hold the object of type post(type means constructor type)
         var adapter=my_post_rv_adapter(requireContext(),postList) //set the post list
-        binding.RV.layoutManager=StaggeredGridLayoutManager(3,StaggeredGridLayoutManager.VERTICAL)
+        val spacingInPixels = resources.getDimensionPixelSize(R.dimen.item_spacing)
+        binding.RV.layoutManager= StaggeredGridLayoutManager(3, StaggeredGridLayoutManager.VERTICAL)
         binding.RV.adapter=adapter
+        val itemDecoration = SpacesItemDecoration(spacingInPixels)
+        binding.RV.addItemDecoration(itemDecoration)
+
         Firebase.firestore.collection(Firebase.auth.currentUser!!.uid).get().addOnSuccessListener {
             var tempList= arrayListOf<Post>()
             for (i in it.documents){

@@ -17,21 +17,36 @@ fun uploadImage(uri: Uri, folderName: String,callback:(String?)->Unit) {
         }
 
 }
-fun uploadVideo(uri: Uri, folderName: String,progressDialog: ProgressDialog,callback:(String?)->Unit) {
-    var imagrUrl: String? =null
-  progressDialog.setTitle("Uploading . . .")
+fun uploadVideo(
+    uri: Uri,
+    folderName: String,
+    progressDialog: ProgressDialog,
+    callback: (String?) -> Unit
+) {
+    progressDialog.setTitle("Uploading . . .")
     progressDialog.show()
-    FirebaseStorage.getInstance().getReference(folderName).child(UUID.randomUUID().toString())
-        .putFile(uri)
-        .addOnSuccessListener {
-            it.storage.downloadUrl.addOnSuccessListener {
-                imagrUrl=it.toString()
-                callback(imagrUrl)
+
+    val storageReference = FirebaseStorage.getInstance().getReference(folderName)
+        .child(UUID.randomUUID().toString())
+
+    storageReference.putFile(uri)
+        .addOnSuccessListener { taskSnapshot ->
+            taskSnapshot.storage.downloadUrl.addOnSuccessListener { uri ->
+                callback(uri.toString())
+                progressDialog.dismiss()
+            }.addOnFailureListener { exception ->
+                callback(null)
+                progressDialog.dismiss()
+                // Log or handle the exception
             }
-
-        }.addOnProgressListener {
-            val uploadValue :Long =it.bytesTransferred/it.totalByteCount
-            progressDialog.setMessage("upload $uploadValue %")
         }
-
+        .addOnProgressListener { taskSnapshot ->
+            val progress = (100.0 * taskSnapshot.bytesTransferred / taskSnapshot.totalByteCount)
+            progressDialog.setMessage("Uploaded ${progress.toInt()}%")
+        }
+        .addOnFailureListener { exception ->
+            callback(null)
+            progressDialog.dismiss()
+            // Log or handle the exception
+        }
 }

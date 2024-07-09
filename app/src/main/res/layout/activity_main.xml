@@ -24,7 +24,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="from"
-        android:textColor="#FFEB3B"
+        android:textColor="#FDE403"
         android:textSize="20sp"
 
         android:textStyle="bold"

@@ -26,4 +26,4 @@ A fully functional social media app built with **Kotlin** and **Firebase**, feat
 
 1. Clone the repository:
    ```bash
-   git clone https://github.com/your-username/SocialMediaX.git
+  [ git clone https://github.com/khananon/duckapp.git]

@@ -1,6 +1,3 @@
-![GitHub contributors](https://img.shields.io/github/contributors/khananon/duckapp)
-![GitHub stars](https://img.shields.io/github/stars/khananon/duckapp?style=social)
-![GitHub forks](https://img.shields.io/github/forks/khananon/duckapp?style=social)
 
 # 🔗 SocialMediaX - Kotlin Firebase Social App
 

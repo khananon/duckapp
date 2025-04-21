@@ -1,3 +1,7 @@
+![GitHub contributors](https://img.shields.io/github/contributors/khananon/duckapp)
+![GitHub stars](https://img.shields.io/github/stars/khananon/duckapp?style=social)
+![GitHub forks](https://img.shields.io/github/forks/khananon/duckapp?style=social)
+
 # 🔗 SocialMediaX - Kotlin Firebase Social App
 
 A fully functional social media app built with **Kotlin** and **Firebase**, featuring user authentication, friend search, friend request system, and a reels-like video sharing experience.
@@ -39,3 +43,13 @@ Build & run the app on your emulator or device.
 
 🤝 Contribution
 Want to contribute? Feel free to fork the repo and submit a pull request.
+
+## 👥 Contributors
+
+Thanks to these amazing people who helped shape this project 💪
+
+<a href="https://github.com/khananon"><img src="https://avatars.githubusercontent.com/khananon" width="50"/></a>
+<a href="https://github.com/Vaib215"><img src="https://avatars.githubusercontent.com/Vaib215" width="50"/></a>
+<a href="https://github.com/uniquesonu"><img src="https://avatars.githubusercontent.com/uniquesonu" width="50"/></a>
+
+

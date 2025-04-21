@@ -26,4 +26,16 @@ A fully functional social media app built with **Kotlin** and **Firebase**, feat
 
 1. Clone the repository:
    ```bash
-  [ git clone https://github.com/khananon/duckapp.git]
+   git clone https://github.com/khananon/duckapp.git
+Open the project in Android Studio.
+
+Connect your Firebase project:
+
+Add your google-services.json in the app/ folder.
+
+Enable Authentication, Firestore, and Storage from Firebase Console.
+
+Build & run the app on your emulator or device.
+
+🤝 Contribution
+Want to contribute? Feel free to fork the repo and submit a pull request.

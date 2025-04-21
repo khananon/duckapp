@@ -1,5 +1,5 @@
 
-# 🔗 SocialMediaX - Kotlin Firebase Social App
+# 🔗 Dukapp - Kotlin Firebase Social App
 
 A fully functional social media app built with **Kotlin** and **Firebase**, featuring user authentication, friend search, friend request system, and a reels-like video sharing experience.
 
